@@ -1,0 +1,32 @@
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  application:
+    name: exam
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5454/school_management
+    #url: jdbc:postgresql://postgres:5432/ac_service # account_db  get from NAMES of postgres build container using network
+    username: postgres
+    password: lang@123
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 50
+      connection-timeout: 20000 # 20 seconds
+      idle-timeout: 300000 # 5 minutes
+      max-lifetime: 1200000 # 20 minutes
+      leak-detection-threshold: 60000 # 1 minute (lifesaver for debugging)
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        enable_lazy_load_no_trans: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    show-sql: true
