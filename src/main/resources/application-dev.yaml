@@ -6,7 +6,7 @@ spring:
   application:
     name: exam
   datasource:
-    url: jdbc:h2:file:D:/others/Learing/h2/classroom/classroom_service;DB_CLOSE_DELAY=-1;
+    url: jdbc:h2:file:D:/others/Learing/h2/exam/exam-service;DB_CLOSE_DELAY=-1;
     username: lang
     password: lang123
     driver-class-name: org.h2.Driver

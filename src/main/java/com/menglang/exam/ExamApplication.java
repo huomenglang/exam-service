@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
 		"com.menglang.exam",              // your microservice code
-		"com.menglang.common.library"        // your common-library code
+		"com.menglang.common.library"     // your common-library code
 })
 public class ExamApplication {
 

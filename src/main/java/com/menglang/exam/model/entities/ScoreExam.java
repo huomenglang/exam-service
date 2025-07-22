@@ -1,21 +1,30 @@
 package com.menglang.exam.model.entities;
 import com.menglang.exam.model.audit.AuditEntity;
-import com.menglang.exam.model.enums.ScoreType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 
-@Table(name = "score_exams")
 @Entity
+@Table(
+        name = "score_exam",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_score_exam_student_exam_subject_year",
+                        columnNames = {"student_id", "exam_id", "subject_id", "academic_year_id"}
+                )
+        },
+        indexes = @Index(name = "idx_score_exam_query", columnList = "student_id, exam_id")
+)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class ScoreExam extends AuditEntity<Long> {
+public class ScoreExam extends AuditEntity<Long> implements Serializable {
 
     @Column(name = "student_id")
-    private Long studentId;
+    private Long student;
 
     @ManyToOne
     @JoinColumn(name = "exam_id")
@@ -34,10 +43,6 @@ public class ScoreExam extends AuditEntity<Long> {
     private Long teacher;
 
     private Short score;
-
-    @Column(name = "score_type",length = 15)
-    @Enumerated(EnumType.STRING)
-    private ScoreType scoreType;
 
     @Column(length = 200)
     private String description;
