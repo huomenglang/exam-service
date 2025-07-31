@@ -133,7 +133,8 @@ public class ScoreExamServiceImpl implements ScoreExamService{
                 .toList();
 
         // Check duplicates in 1 query
-        List<Object[]> existingDuplicates = scoreExamRepository.findExistingDuplicates(pairs);
+//        List<Object[]> existingDuplicates = scoreExamRepository.findExistingDuplicates(pairs);
+        List<Object[]>existingDuplicates=scoreExamRepository.findExistingDuplicates(pairs);
         if (!existingDuplicates.isEmpty()) {
             throw new ConflictException("Duplicates found: " + existingDuplicates);
         }

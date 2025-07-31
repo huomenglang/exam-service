@@ -36,6 +36,10 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-validation')
 	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.0")
+	implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.3.0")
+	implementation("org.apache.poi:poi-ooxml:5.4.1")
+	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+
 	implementation("org.mapstruct:mapstruct:1.6.3")
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

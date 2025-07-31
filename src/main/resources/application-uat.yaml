@@ -11,13 +11,18 @@ spring:
     #url: jdbc:postgresql://postgres:5432/ac_service # account_db  get from NAMES of postgres build container using network
     username: postgres
     password: lang@123
+
     hikari:
-      maximum-pool-size: 10
-      minimum-idle: 50
-      connection-timeout: 20000 # 20 seconds
-      idle-timeout: 300000 # 5 minutes
-      max-lifetime: 1200000 # 20 minutes
-      leak-detection-threshold: 60000 # 1 minute (lifesaver for debugging)
+      maximum-pool-size: ${DB_POOL_SIZE:20}
+      minimum-idle: ${DB_POOL_MIN_IDLE:5}
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      leak-detection-threshold: 60000  # 1 minute
+      initialization-fail-timeout: 1    # Fail fast if DB is down
+      connection-test-query: SELECT 1   # For older JDBC drivers
+      pool-name: MyAppHikariPool
+
   jpa:
     hibernate:
       ddl-auto: update
